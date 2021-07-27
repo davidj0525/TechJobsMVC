@@ -9,7 +9,7 @@
             @foreach (var column in ViewBag.columns)
             {
                 <span>
-                    <input type="radio" name="searchType" id="@column.Key" value="@column.Key" checked="@column.Key == 'all'" />
+                    <input type="radio" name="searchType" id="@column.Key" value="@column.Key" checked="@column.Key = 'all'" />
                     <label for="@column.Key">@column.Value</label>
                 </span>
             }
@@ -26,8 +26,29 @@
 
     <hr />
 
-    @{
-        //TODO #4: Loop over the search results to display all job fields.
+    @if (ViewBag.jobs != null)
+    {
+        <table class="job-listing">
+            @foreach (var item in ViewBag.jobs)
+            {
+                <tr>
+                    <td>
+                        <ul style="list-style-type:none;">
+                            @*<li>@item.ToString()</li> tried this after refactoring the tostring method override - it worked but I couldn't get it to format properly'*@
+                            <li>Job Id: @item.Id</li>
+                            <li>Job Name: @item.Name</li>
+                            <li>Employer: @item.Employer</li>
+                            <li>Location: @item.Location</li>
+                            <li>Position Type: @item.PositionType</li>
+                            <li>Core Compentency: @item.CoreCompetency</li>
+                        </ul>
+                    </td>
+
+                </tr>
+            }
+        </table>
     }
+
+
 
 </div>

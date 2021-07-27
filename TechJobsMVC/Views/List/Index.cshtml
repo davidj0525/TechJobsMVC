@@ -11,19 +11,31 @@
         }
     </tr>
     <tr>
-        @{
-            //TODO #2: Complete the View Jobs By Category Table
-        }
-
-        <td></td> @* Feel free to remove or modify this element if necessary. *@
+        <td>
+            <ul style="list-style-type:none;">
+                    <li>
+                        <a asp-controller="List" 
+                           asp-action="Jobs" 
+                           asp-route-column="All"
+                           >ALL THE JOBBSSS!!
+                        </a>
+                    </li>
+            </ul>
+        </td> 
         @foreach (var category in ViewBag.tableChoices)
         {
             <td>
-                <ul>
+                <ul style="list-style-type:none;">
                     @foreach (var item in category.Value)
                     {
                         <li>
-                            <a asp-controller="List" asp-action="Jobs" asp-route-column="@category.Key" asp-route-value="@item">@item</a>
+                            <a asp-controller="List" 
+                               asp-action="Jobs" 
+                               asp-route-column="@category.Key" 
+                               asp-route-value="@item"
+                               >
+                                @item
+                            </a>
                         </li>
                     }
                 </ul>
